@@ -21,48 +21,64 @@ $( document ).ready(function() {
     function addRecordToTable(data){
            console.log("inside the add record to Table\n")
            console.log(data);
+           var rowCount = $('#movie_table tr').length;
+           console.log(rowCount+"\n");
+            classStr = "";
+            if (rowCount%3==0){
+              classStr = "<tr class='danger'>";
+            }
+            if (rowCount%3==1){
+             classStr = "<tr class='success'>";
+            }
+            if (rowCount%3==2){
+             classStr = "<tr class='info'>";
+            }
+
+            rowString = classStr+"<td>"+data["_id"]+"</td><td>"+data["name"]+"</td><td>"+data["media_type"]+"</td><td>"+data["first_air_date"]+"</td><td>"+data["popularity"]+"</td><td>"+data["vote_count"]+"</td></tr>"
+           //$('#movie_table > tbody:last').append(rowString);
+           if (rowCount%10 == 0 ){
+                 $('#movie_table tr:first').fadeOut(2000, function() {
+                 $('#movie_table tr:first').remove();
+                 newRow = $(rowString).hide();
+                 $('#movie_table').append(newRow);
+                 newRow.fadeIn(2000);
+                 });
+              }
+           else{
+            $('#movie_table > tbody:last').append(rowString);
+           }
+
+
     }
+
 });
 </script>
 <div class="container">
   <h2>Movie list </h2>
-  <p> Movie Details </p>            
-  <table class="table">
+  <p> Movie Details </p>
+   <table class="table" id="dummy_table">
     <thead>
-      <tr>
         <th>Movie ID</th>
         <th>Movie Name</th>
         <th>Media Type</th>
         <th>Air Date</th>
         <th>Popularity</th>
         <th>Vote Count </th>
-      </tr>
     </thead>
     <tbody>
-      <tr class="success">
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td>john@example.com</td>
-        <td>john@example.com</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr class="danger">
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>Moe</td>
-        <td>Moe</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr class="info">
-        <td>July</td>
-        <td>Dooley</td>
-        <td>Dooley</td>
-        <td>Dooley</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+    </tbody>
+  </table>
+            
+  <table class="table" id="movie_table">
+    <thead>
+        <th>Movie ID</th>
+        <th>Movie Name</th>
+        <th>Media Type</th>
+        <th>Air Date</th>
+        <th>Popularity</th>
+        <th>Vote Count </th>
+    </thead>
+    <tbody>
     </tbody>
   </table>
 </div>
