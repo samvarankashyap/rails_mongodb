@@ -1,5 +1,24 @@
 <h1>Movie Records</h1>
+<script>
+$( document ).ready(function() {
+    console.log( "ready!" );
+    sessionStorage.count = 0 ;
+    var myVar=setInterval(function () {myTimer()}, 10);
+    function myTimer() {
+          if (sessionStorage.count == 200){
+              sessionStorage.count = 0;
+          }
+          var url = "http://localhost:3000/movie_records/";
+          sessionStorage.count = parseInt(sessionStorage.count)+1 ;
+          getUrl = url+sessionStorage.count;
+          $.get( getUrl, function( data ) {
+                console.log(data);
+               }
+         );
 
+    }
+});
+</script>
 <div class="container">
   <h2>Movie list </h2>
   <p> Movie Details </p>            
