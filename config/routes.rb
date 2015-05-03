@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'displaymovies/index'
+  root 'displaymovies#index'
 
   resources :movie_records
 
