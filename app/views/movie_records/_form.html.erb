@@ -1,0 +1,41 @@
+<%= form_for(@movie_record) do |f| %>
+  <% if @movie_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie_record.errors.count, "error") %> prohibited this movie_record from being saved:</h2>
+
+      <ul>
+      <% @movie_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :movie_id %><br>
+    <%= f.text_field :movie_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :media_type %><br>
+    <%= f.text_field :media_type %>
+  </div>
+  <div class="field">
+    <%= f.label :first_air_date %><br>
+    <%= f.text_field :first_air_date %>
+  </div>
+  <div class="field">
+    <%= f.label :popularity %><br>
+    <%= f.text_field :popularity %>
+  </div>
+  <div class="field">
+    <%= f.label :vote_count %><br>
+    <%= f.text_field :vote_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

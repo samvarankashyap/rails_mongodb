@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @movie_record.movie_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @movie_record.name %>
+</p>
+
+<p>
+  <strong>Media type:</strong>
+  <%= @movie_record.media_type %>
+</p>
+
+<p>
+  <strong>First air date:</strong>
+  <%= @movie_record.first_air_date %>
+</p>
+
+<p>
+  <strong>Popularity:</strong>
+  <%= @movie_record.popularity %>
+</p>
+
+<p>
+  <strong>Vote count:</strong>
+  <%= @movie_record.vote_count %>
+</p>
+
+<%= link_to 'Edit', edit_movie_record_path(@movie_record) %> |
+<%= link_to 'Back', movie_records_path %>
