@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'displaymovies/index'
+
   resources :movie_records
 
   # The priority is based upon order of creation: first created -> highest priority.
