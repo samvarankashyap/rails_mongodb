@@ -3,7 +3,7 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     sessionStorage.count = 0 ;
-    var myVar=setInterval(function () {myTimer()}, 1000);
+    var myVar=setInterval(function () {myTimer()}, 2000);
     function myTimer() {
           if (sessionStorage.count == 200){
               sessionStorage.count = 0;
@@ -12,43 +12,32 @@ $( document ).ready(function() {
           sessionStorage.count = parseInt(sessionStorage.count)+1 ;
           getUrl = url+sessionStorage.count;
           $.get( getUrl, function( data ) {
-                console.log(data);
+               // console.log(data);
                 addRecordToTable(data);
                }
          );
 
     }
     function addRecordToTable(data){
-           console.log("inside the add record to Table\n")
-           console.log(data);
+           //console.log("inside the add record to Table\n")
+           //console.log(data);
            var rowCount = $('#movie_table tr').length;
-           console.log(rowCount+"\n");
-            classStr = "";
-            if (rowCount%3==0){
-              classStr = "<tr class='danger'>";
-            }
-            if (rowCount%3==1){
-             classStr = "<tr class='success'>";
-            }
-            if (rowCount%3==2){
-             classStr = "<tr class='info'>";
-            }
+           //console.log(rowCount+"\n");
+            classStr = "<tr class='info'>";
 
             rowString = classStr+"<td>"+data["_id"]+"</td><td>"+data["name"]+"</td><td>"+data["media_type"]+"</td><td>"+data["first_air_date"]+"</td><td>"+data["popularity"]+"</td><td>"+data["vote_count"]+"</td></tr>"
            //$('#movie_table > tbody:last').append(rowString);
-           if (rowCount%10 == 0 ){
-                 $('#movie_table tr:first').fadeOut(2000, function() {
+           if (rowCount%20 == 0 ){
+                 $('#movie_table tr:first').fadeOut(500, function() {
                  $('#movie_table tr:first').remove();
                  newRow = $(rowString).hide();
                  $('#movie_table').append(newRow);
-                 newRow.fadeIn(2000);
+                 newRow.fadeIn(1000);
                  });
               }
            else{
             $('#movie_table > tbody:last').append(rowString);
            }
-
-
     }
 
 });
@@ -71,12 +60,12 @@ $( document ).ready(function() {
             
   <table class="table" id="movie_table">
     <thead>
-        <th>Movie ID</th>
-        <th>Movie Name</th>
-        <th>Media Type</th>
-        <th>Air Date</th>
-        <th>Popularity</th>
-        <th>Vote Count </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
     </thead>
     <tbody>
     </tbody>
