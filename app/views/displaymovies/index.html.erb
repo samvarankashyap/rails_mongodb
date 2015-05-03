@@ -3,7 +3,7 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     sessionStorage.count = 0 ;
-    var myVar=setInterval(function () {myTimer()}, 10);
+    var myVar=setInterval(function () {myTimer()}, 1000);
     function myTimer() {
           if (sessionStorage.count == 200){
               sessionStorage.count = 0;
@@ -13,9 +13,14 @@ $( document ).ready(function() {
           getUrl = url+sessionStorage.count;
           $.get( getUrl, function( data ) {
                 console.log(data);
+                addRecordToTable(data);
                }
          );
 
+    }
+    function addRecordToTable(data){
+           console.log("inside the add record to Table\n")
+           console.log(data);
     }
 });
 </script>
