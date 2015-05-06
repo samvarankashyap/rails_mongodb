@@ -8,7 +8,7 @@ $( document ).ready(function() {
           if (sessionStorage.count == 200){
               sessionStorage.count = 0;
           }
-          var url = "http://localhost:3000/movie_records/";
+          var url = "/movie_records/";
           sessionStorage.count = parseInt(sessionStorage.count)+1 ;
           getUrl = url+sessionStorage.count;
           $.get( getUrl, function( data ) {
